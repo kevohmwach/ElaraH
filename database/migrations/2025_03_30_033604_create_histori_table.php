@@ -33,10 +33,10 @@ return new class extends Migration
             $table->string('surgery_4_Doctor')->nullable();
             $table->string('surgery_4_location')->nullable();
             $table->string('surgery_4_year')->nullable();
-            $table->string('surgery_5_description')->nullable();
-            $table->string('surgery_5_Doctor')->nullable();
-            $table->string('surgery_5_location')->nullable();
-            $table->string('surgery_5_year')->nullable();
+            // $table->string('surgery_5_description')->nullable();
+            // $table->string('surgery_5_Doctor')->nullable();
+            // $table->string('surgery_5_location')->nullable();
+            // $table->string('surgery_5_year')->nullable();
             $table->string('med_hist_anemia')->nullable();
             $table->string('med_hist_arthritis')->nullable();
             $table->string('med_hist_asthma')->nullable();
@@ -81,6 +81,7 @@ return new class extends Migration
             $table->string('med_hist_tremors')->nullable();
             $table->string('med_hist_wheat_allergy')->nullable();
             $table->string('any_other_medical_problem')->nullable();
+            $table->string('discussed_at_mdt');
 
             $table->timestamps();
         });

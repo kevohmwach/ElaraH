@@ -49,14 +49,14 @@ class CancerForm extends Component
     public $allergy_3_reaction;
     public $allergy_4;
     public $allergy_4_reaction;
-    public $dose_n_sig_1;
-    public $dose_n_sig_1_medication;
-    public $dose_n_sig_2;
-    public $dose_n_sig_2_medication;
-    public $dose_n_sig_3;
-    public $dose_n_sig_3_medication;
-    public $dose_n_sig_4;
-    public $dose_n_sig_4_medication;
+    // public $dose_n_sig_1;
+    // public $dose_n_sig_1_medication;
+    // public $dose_n_sig_2;
+    // public $dose_n_sig_2_medication;
+    // public $dose_n_sig_3;
+    // public $dose_n_sig_3_medication;
+    // public $dose_n_sig_4;
+    // public $dose_n_sig_4_medication;
     public $primary_worry;
     public $issue_began;
     public $in_pain;
@@ -73,16 +73,18 @@ class CancerForm extends Component
     
     
     
-    public $totalSteps = 5;
+    public $totalSteps = 4;
     public $currentStep = 1;
     public $method;
     public $patient_id;
     public $patient;
+    public $diagnosis_data;
 
-    public function mount($method, $patient_id){
+    public function mount($method, $patient_id, $diagnosis_data){
         $this->currentStep = 1;
         $this->method = $method;
         $this->patient_id = $patient_id;
+        $this->diagnosis_data = $diagnosis_data;
 
         if($method=='update'){
             //$this->patient = Cancer::find($patient_id);
@@ -127,14 +129,14 @@ class CancerForm extends Component
                 $this->allergy_3_reaction = $this->patient->allergy_3_reaction;
                 $this->allergy_4 = $this->patient->allergy_4;
                 $this->allergy_4_reaction = $this->patient->allergy_4_reaction;
-                $this->dose_n_sig_1 = $this->patient->dose_n_sig_1;
-                $this->dose_n_sig_1_medication = $this->patient->dose_n_sig_1_medication;
-                $this->dose_n_sig_2 = $this->patient->dose_n_sig_2;
-                $this->dose_n_sig_2_medication = $this->patient->dose_n_sig_2_medication;
-                $this->dose_n_sig_3 = $this->patient->dose_n_sig_3;
-                $this->dose_n_sig_3_medication = $this->patient->dose_n_sig_3_medication;
-                $this->dose_n_sig_4 = $this->patient->dose_n_sig_4;
-                $this->dose_n_sig_4_medication = $this->patient->dose_n_sig_4_medication;
+                // $this->dose_n_sig_1 = $this->patient->dose_n_sig_1;
+                // $this->dose_n_sig_1_medication = $this->patient->dose_n_sig_1_medication;
+                // $this->dose_n_sig_2 = $this->patient->dose_n_sig_2;
+                // $this->dose_n_sig_2_medication = $this->patient->dose_n_sig_2_medication;
+                // $this->dose_n_sig_3 = $this->patient->dose_n_sig_3;
+                // $this->dose_n_sig_3_medication = $this->patient->dose_n_sig_3_medication;
+                // $this->dose_n_sig_4 = $this->patient->dose_n_sig_4;
+                // $this->dose_n_sig_4_medication = $this->patient->dose_n_sig_4_medication;
                 $this->primary_worry = $this->patient->primary_worry;
                 $this->issue_began = $this->patient->issue_began;
                 $this->in_pain = $this->patient->in_pain;
@@ -145,7 +147,7 @@ class CancerForm extends Component
                 $this->pain_occurence = $this->patient->pain_occurence;
                 $this->pain_worst = $this->patient->pain_worst;
                 $this->curr_symptoms = $this->patient->curr_symptoms;
-                $this->pain_descr = $this->patient->pain_descr;
+                $this->pain_descr = json_decode($this->patient->pain_descr);
                 $this->other_health_concerns = $this->patient->other_health_concerns;
             }
         }
@@ -173,7 +175,6 @@ class CancerForm extends Component
         }
     }
     public function validateData(){
-        //dd($this->diagnosis_date);
         if($this->currentStep == 1){
             $this->validate([
                 'current_diagnosis'=>'',
@@ -228,18 +229,6 @@ class CancerForm extends Component
         }
         else if($this->currentStep == 4){
             $this->validate([
-                'dose_n_sig_1'=>'',
-                'dose_n_sig_1_medication'=>'',
-                'dose_n_sig_2'=>'',
-                'dose_n_sig_2_medication'=>'',
-                'dose_n_sig_3'=>'',
-                'dose_n_sig_3_medication'=>'',
-                'dose_n_sig_4'=>'',
-                'dose_n_sig_4_medication'=>'',
-            ]);
-        }
-        else if($this->currentStep == 5){
-            $this->validate([
                 'primary_worry'=>'',
                 'issue_began'=>'',
                 'in_pain'=>'',
@@ -252,6 +241,22 @@ class CancerForm extends Component
                 'curr_symptoms'=>'',
                 'pain_descr'=>'',
                 'other_health_concerns'=>'',
+            ]);
+        }
+        else if($this->currentStep == 5){
+            $this->validate([
+                // 'primary_worry'=>'',
+                // 'issue_began'=>'',
+                // 'in_pain'=>'',
+                // 'pain_location'=>'',
+                // 'pain_treatment'=>'',
+                // 'pain_treatment_change'=>'',
+                // 'pain_begin_trend'=>'',
+                // 'pain_occurence'=>'',
+                // 'pain_worst'=>'',
+                // 'curr_symptoms'=>'',
+                // 'pain_descr'=>'',
+                // 'other_health_concerns'=>'',
             ]);
         }
     }
@@ -301,14 +306,14 @@ class CancerForm extends Component
             'allergy_3_reaction' =>$this->allergy_3_reaction,
             'allergy_4' =>$this->allergy_4,
             'allergy_4_reaction' =>$this->allergy_4_reaction,
-            'dose_n_sig_1' =>$this->dose_n_sig_1,
-            'dose_n_sig_1_medication' =>$this->dose_n_sig_1_medication,
-            'dose_n_sig_2' =>$this->dose_n_sig_2,
-            'dose_n_sig_2_medication' =>$this->dose_n_sig_2_medication,
-            'dose_n_sig_3' =>$this->dose_n_sig_3,
-            'dose_n_sig_3_medication' =>$this->dose_n_sig_3_medication,
-            'dose_n_sig_4' =>$this->dose_n_sig_4,
-            'dose_n_sig_4_medication' =>$this->dose_n_sig_4_medication,
+            // 'dose_n_sig_1' =>$this->dose_n_sig_1,
+            // 'dose_n_sig_1_medication' =>$this->dose_n_sig_1_medication,
+            // 'dose_n_sig_2' =>$this->dose_n_sig_2,
+            // 'dose_n_sig_2_medication' =>$this->dose_n_sig_2_medication,
+            // 'dose_n_sig_3' =>$this->dose_n_sig_3,
+            // 'dose_n_sig_3_medication' =>$this->dose_n_sig_3_medication,
+            // 'dose_n_sig_4' =>$this->dose_n_sig_4,
+            // 'dose_n_sig_4_medication' =>$this->dose_n_sig_4_medication,
             'primary_worry' =>$this->primary_worry,
             'issue_began' =>$this->issue_began,
             'in_pain' =>$this->in_pain,
@@ -324,7 +329,7 @@ class CancerForm extends Component
         );
 
         auth()->user()->cancer()->create($data);
-        $this->reset();
+        //$this->reset();
         $this->currentStep = 1;
 
     }
@@ -372,14 +377,14 @@ class CancerForm extends Component
             $patientData->allergy_3_reaction = $this->allergy_3_reaction;
             $patientData->allergy_4 = $this->allergy_4;
             $patientData->allergy_4_reaction = $this->allergy_4_reaction;
-            $patientData->dose_n_sig_1 = $this->dose_n_sig_1;
-            $patientData->dose_n_sig_1_medication = $this->dose_n_sig_1_medication;
-            $patientData->dose_n_sig_2 = $this->dose_n_sig_2;
-            $patientData->dose_n_sig_2_medication = $this->dose_n_sig_2_medication;
-            $patientData->dose_n_sig_3 = $this->dose_n_sig_3;
-            $patientData->dose_n_sig_3_medication = $this->dose_n_sig_3_medication;
-            $patientData->dose_n_sig_4 = $this->dose_n_sig_4;
-            $patientData->dose_n_sig_4_medication = $this->dose_n_sig_4_medication;
+            // $patientData->dose_n_sig_1 = $this->dose_n_sig_1;
+            // $patientData->dose_n_sig_1_medication = $this->dose_n_sig_1_medication;
+            // $patientData->dose_n_sig_2 = $this->dose_n_sig_2;
+            // $patientData->dose_n_sig_2_medication = $this->dose_n_sig_2_medication;
+            // $patientData->dose_n_sig_3 = $this->dose_n_sig_3;
+            // $patientData->dose_n_sig_3_medication = $this->dose_n_sig_3_medication;
+            // $patientData->dose_n_sig_4 = $this->dose_n_sig_4;
+            // $patientData->dose_n_sig_4_medication = $this->dose_n_sig_4_medication;
             $patientData->primary_worry = $this->primary_worry;
             $patientData->issue_began = $this->issue_began;
             $patientData->in_pain = $this->in_pain;
@@ -390,6 +395,8 @@ class CancerForm extends Component
             $patientData->pain_occurence = $this->pain_occurence;
             $patientData->pain_worst = $this->pain_worst;
             $patientData->curr_symptoms = $this->curr_symptoms;
+            $patientData->pain_descr = json_encode($this->pain_descr);
+            $patientData->other_health_concerns = $this->other_health_concerns;
 
             $patientData->save();
             // $this->reset();

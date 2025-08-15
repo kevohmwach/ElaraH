@@ -61,4 +61,31 @@ class User extends Authenticatable
     public function callscript() : HasMany {
         return $this->hasMany(CallScript::class);
     }
+    public function p_callscript() : HasMany {
+        return $this->hasMany(P_CallScript::class);
+    }
+    public function diagnosis() : HasMany {
+        return $this->hasMany(DiagnosisPre::class);
+    }
+    public function dropout() : HasMany {
+        return $this->hasMany(DropoutPre::class);
+    }
+    public function insurance() : HasMany {
+        return $this->hasMany(InsurancePre::class);
+    }
+    public function practitioner() : HasMany {
+        return $this->hasMany(PractitionerPre::class);
+    }
+    public function response() : HasMany {
+        return $this->hasMany(ResponsePre::class);
+    }
+    public function p_response() : HasMany {
+        return $this->hasMany(P_ResponsePre::class);
+    }
+    public function facility() : HasMany {
+        return $this->hasMany(Facility::class);
+    }
+    public function adverse_events() : HasMany {
+        return $this->hasMany(AdverseEvents::class);
+    }
 }

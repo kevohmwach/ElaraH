@@ -7,10 +7,9 @@
         text-decoration: none;
     }
     button{
-        /* background-color: #6c757d; */
-        background-color: #198754;
+        background-color: #2b3a80;
         color: white;
-        padding: 10px 20px;
+        /* padding: 10px 20px; */
         border-radius: 2px;
         border: 1px;
     }
@@ -19,6 +18,7 @@
         width: 80%;
         margin: auto;
         padding: 20px;
+        padding-top: 0px;
     }
 
     .patients {
@@ -43,17 +43,49 @@
         background-color: #6c757d;
         color: white;
         }
+        .record_filter{
+            display: flex;
+            padding: 10px;
+            /* border: 1px solid green; */
+            align-items: center;
+        }
+        .search-button{
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 13px;
+            border-left: none;
+
+        }
 
 </style>
 
 @section('content')
 
-<div class="wrapper-table">
-    <button>
+{{-- <div>
+    search
+</div> --}}
+
+<div class="wrapper wrapper-table">
+    {{-- <button>
         <a class="download_link"  href="{{route('patient_download')}}" >Download</a>
-    </button>
+    </button> --}}
     
     <table class="patients">
+        <div class="record_filter">
+            <form action="{{route('patient_search')}}" method="get">
+                <select name="searchField" id="searchField" class="patient_search_opton">
+                    <option value="account_no">Account No</option>
+                    <option value="name">Patient Name</option>
+                </select>
+                
+                <input type="search" name="searchTerm" id="searchTerm" >
+                <a href="#">
+                    <button type="submit" class=" btn-primary search-button ">
+                        <i class="fa fa-search" style="font-size:20px;color:white"></i>
+                    </button>
+                </a>
+            </form>
+        </div>
         <thead style="padding:5px">
             <th>Account No.</th>
             <th>First Name</th>
@@ -73,13 +105,18 @@
                     <td>{{$patient['email']}}</td>
                     <td>{{$patient['mobile_contact']}}</td>
                     <td>
-                        <a href="{{route('updatePatient', ['id'=>$patient['id'] ] )}}" >Update</a>
+                        <a class="link" href="{{route('updatePatient', ['id'=>$patient['id'] ] )}}" >Update</a>
+                        {{-- <a href="{{route('showCancer', ['id'=>$patient['id'] ] )}}" >View</a> --}}
                     </td>
 
                 </tr>
             @endforeach
         </tbody>
     </table>
+    <div class="pagination-div">
+        {{$patients->links('pagination::bootstrap-4')}}
+    </div>
 </div>
+
 
 @endsection

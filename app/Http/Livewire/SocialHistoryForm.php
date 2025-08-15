@@ -216,7 +216,7 @@ class SocialHistoryForm extends Component
         );
 
         auth()->user()->socialhistory()->create($data);
-        $this->reset();
+        //$this->reset();
         $this->currentStep = 1;
 
     }

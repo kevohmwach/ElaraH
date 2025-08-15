@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CallScript;
 use App\Models\Patient;
+use App\Models\ResponsePre;
+use App\Models\PractitionerPre;
+use Illuminate\Support\Facades\Auth;
 
 class CallScriptController extends Controller
 {
@@ -14,25 +17,41 @@ class CallScriptController extends Controller
     }
     
     public function callScript($id,$acc_no){
-        $data = Patient::find($id);
-        // $method = 'register';
+        if(Auth::user()->role>0){
+            $data = Patient::find($id);
+            $response_data = ResponsePre::latest()->get();
+            $physician_data = PractitionerPre::find($data->physician_id_1);
 
-        if($data->account_no == $acc_no){
-            //check whether user has Social History details set
-            $callScriptData = CallScript::where('patient_id', $id)->first();
-            if($callScriptData){
-                $method = 'update';
+            if($data->account_no == $acc_no){
+                //check whether user has Social History details set
+                $callScriptData = CallScript::where('patient_id', $id)->first();
+                if($callScriptData){
+                    $method = 'update';
+                }else{
+                    $method = 'register';
+                }
+                
             }else{
-                $method = 'register';
+                echo 'invalid user';
             }
-            
+            return view('callscript.callscript', [
+                'method'=> $method,
+                'patientdata' => $data,
+                'response_data' => $response_data,
+                'physician_data' => $physician_data,
+            ]);
+
         }else{
-            echo 'invalid user';
+            return redirect(route('home'));
         }
-        return view('callscript.callscript', [
-            'method'=> $method,
-            'patientdata' => $data,
-        ]);
+
+
+        // if(Auth::user()->role>0){
+
+        // }else{
+        //     return redirect(route('home'));
+        // }
+        
         
     }
 }

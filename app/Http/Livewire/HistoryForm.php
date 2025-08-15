@@ -75,6 +75,8 @@ class HistoryForm extends Component
     public $med_hist_tremors;
     public $med_hist_wheat_allergy;
     public $any_other_medical_problem;
+    public $discussed_at_mdt;
+    
 
     public $totalSteps = 3;
     public $currentStep = 1;
@@ -106,10 +108,10 @@ class HistoryForm extends Component
                 $this->surgery_4_Doctor = $this->patient->surgery_4_Doctor;
                 $this->surgery_4_location = $this->patient->surgery_4_location;
                 $this->surgery_4_year = $this->patient->surgery_4_year;
-                $this->surgery_5_description = $this->patient->surgery_5_description;
-                $this->surgery_5_Doctor = $this->patient->surgery_5_Doctor;
-                $this->surgery_5_location = $this->patient->surgery_5_location;
-                $this->surgery_5_year = $this->patient->surgery_5_year;
+                // $this->surgery_5_description = $this->patient->surgery_5_description;
+                // $this->surgery_5_Doctor = $this->patient->surgery_5_Doctor;
+                // $this->surgery_5_location = $this->patient->surgery_5_location;
+                // $this->surgery_5_year = $this->patient->surgery_5_year;
                 $this->med_hist_anemia = $this->patient->med_hist_anemia;
                 $this->med_hist_arthritis = $this->patient->med_hist_arthritis;
                 $this->med_hist_asthma = $this->patient->med_hist_asthma;
@@ -126,6 +128,37 @@ class HistoryForm extends Component
                 $this->med_hist_depression = $this->patient->med_hist_depression;
                 $this->med_hist_diabetes = $this->patient->med_hist_diabetes;
                 $this->med_hist_drug_alcohol_abuse = $this->patient->med_hist_drug_alcohol_abuse;
+                $this->med_hist_erectile_dysfunction = $this->patient->med_hist_erectile_dysfunction;
+                $this->med_hist_fibromyalgia = $this->patient->med_hist_fibromyalgia;
+                $this->med_hist_gerd = $this->patient->med_hist_gerd;
+                $this->med_hist_heart_disease = $this->patient->med_hist_heart_disease;
+                $this->med_hist_hyperinsulinemia = $this->patient->med_hist_hyperinsulinemia;
+                $this->med_hist_hyperlipidemia = $this->patient->med_hist_hyperlipidemia;
+                $this->med_hist_hypertension = $this->patient->med_hist_hypertension;
+                $this->med_hist_male_hypogonadism = $this->patient->med_hist_male_hypogonadism;
+                $this->med_hist_hypogonadism = $this->patient->med_hist_hypogonadism;
+                $this->med_hist_Infection_problems = $this->patient->med_hist_Infection_problems;
+                $this->med_hist_insomnia = $this->patient->med_hist_insomnia;
+                $this->med_hist_irritable_bowel_syndrome = $this->patient->med_hist_irritable_bowel_syndrome;
+                $this->med_hist_kidney_problems = $this->patient->med_hist_kidney_problems;
+                $this->med_hist_menopause = $this->patient->med_hist_menopause;
+                $this->med_hist_migranes_headaches = $this->patient->med_hist_migranes_headaches;
+                $this->med_hist_neuropathy = $this->patient->med_hist_neuropathy;
+                $this->med_hist_onychomycosis = $this->patient->med_hist_onychomycosis;
+                $this->med_hist_organ_injury = $this->patient->med_hist_organ_injury;
+                $this->med_hist_osteoporosis = $this->patient->med_hist_osteoporosis;
+                $this->med_hist_pulmonary_embolism = $this->patient->med_hist_pulmonary_embolism;
+                $this->med_hist_seizure_disorders = $this->patient->med_hist_seizure_disorders;
+                $this->med_hist_short_Breath = $this->patient->med_hist_short_Breath;
+                $this->med_hist_sinus_onditions = $this->patient->med_hist_sinus_onditions;
+                $this->med_hist_stroke = $this->patient->med_hist_stroke;
+                $this->med_hist_syndrome_x = $this->patient->med_hist_syndrome_x;
+                $this->med_hist_tremors = $this->patient->med_hist_tremors;
+                $this->med_hist_wheat_allergy = $this->patient->med_hist_wheat_allergy;
+                $this->any_other_medical_problem = $this->patient->any_other_medical_problem;
+                $this->discussed_at_mdt = $this->patient->discussed_at_mdt;
+
+                
 
             }
         }
@@ -174,10 +207,10 @@ class HistoryForm extends Component
                 'surgery_4_Doctor'=>'',
                 'surgery_4_location'=>'',
                 'surgery_4_year'=>'',
-                'surgery_5_description'=>'',
-                'surgery_5_Doctor'=>'',
-                'surgery_5_location'=>'',
-                'surgery_5_year'=>'',
+                // 'surgery_5_description'=>'',
+                // 'surgery_5_Doctor'=>'',
+                // 'surgery_5_location'=>'',
+                // 'surgery_5_year'=>'',
             ]);
         }
         elseif($this->currentStep == 2){
@@ -226,6 +259,8 @@ class HistoryForm extends Component
                 'med_hist_tremors'=>'',
                 'med_hist_wheat_allergy'=>'',
                 'any_other_medical_problem'=>'',
+                'discussed_at_mdt'=>'required|string',
+                
             ]);
         }
         
@@ -271,10 +306,10 @@ class HistoryForm extends Component
             'surgery_4_Doctor'=>$this->surgery_4_Doctor,
             'surgery_4_location'=>$this->surgery_4_location,
             'surgery_4_year'=>$this->surgery_4_year,
-            'surgery_5_description'=>$this->surgery_5_description,
-            'surgery_5_Doctor'=>$this->surgery_5_Doctor,
-            'surgery_5_location'=>$this->surgery_5_location,
-            'surgery_5_year'=>$this->surgery_5_year,
+            // 'surgery_5_description'=>$this->surgery_5_description,
+            // 'surgery_5_Doctor'=>$this->surgery_5_Doctor,
+            // 'surgery_5_location'=>$this->surgery_5_location,
+            // 'surgery_5_year'=>$this->surgery_5_year,
             'med_hist_anemia'=>$this->med_hist_anemia,
             'med_hist_arthritis'=>$this->med_hist_arthritis,
             'med_hist_asthma'=>$this->med_hist_asthma,
@@ -319,6 +354,7 @@ class HistoryForm extends Component
             'med_hist_tremors'=>$this->med_hist_tremors,
             'med_hist_wheat_allergy'=>$this->med_hist_wheat_allergy,
             'any_other_medical_problem'=>$this->any_other_medical_problem,
+            'discussed_at_mdt'=>$this->discussed_at_mdt,
             // 'consume_alcohol'=>$this->consume_alcohol,
             // 'drinks_per_week'=>$this->drinks_per_week,
             // 'currently_smoke'=>$this->currently_smoke,
@@ -341,7 +377,7 @@ class HistoryForm extends Component
         );
 
         auth()->user()->history()->create($data);
-        $this->reset();
+        //$this->reset();
         $this->currentStep = 1;
 
     }
@@ -365,10 +401,10 @@ class HistoryForm extends Component
             $patientData->surgery_4_Doctor = $this->surgery_4_Doctor;
             $patientData->surgery_4_location = $this->surgery_4_location;
             $patientData->surgery_4_year = $this->surgery_4_year;
-            $patientData->surgery_5_description = $this->surgery_5_description;
-            $patientData->surgery_5_Doctor = $this->surgery_5_Doctor;
-            $patientData->surgery_5_location = $this->surgery_5_location;
-            $patientData->surgery_5_year = $this->surgery_5_year;
+            // $patientData->surgery_5_description = $this->surgery_5_description;
+            // $patientData->surgery_5_Doctor = $this->surgery_5_Doctor;
+            // $patientData->surgery_5_location = $this->surgery_5_location;
+            // $patientData->surgery_5_year = $this->surgery_5_year;
             $patientData->med_hist_anemia = $this->med_hist_anemia;
             $patientData->med_hist_arthritis = $this->med_hist_arthritis;
             $patientData->med_hist_asthma = $this->med_hist_asthma;
@@ -385,6 +421,37 @@ class HistoryForm extends Component
             $patientData->med_hist_depression = $this->med_hist_depression;
             $patientData->med_hist_diabetes = $this->med_hist_diabetes;
             $patientData->med_hist_drug_alcohol_abuse = $this->med_hist_drug_alcohol_abuse;
+            $patientData->med_hist_erectile_dysfunction = $this->med_hist_erectile_dysfunction;
+            $patientData->med_hist_fibromyalgia = $this->med_hist_fibromyalgia;
+            $patientData->med_hist_gerd = $this->med_hist_gerd;
+            $patientData->med_hist_heart_disease = $this->med_hist_heart_disease;
+            $patientData->med_hist_hyperinsulinemia = $this->med_hist_hyperinsulinemia;
+            $patientData->med_hist_hyperlipidemia = $this->med_hist_hyperlipidemia;
+            $patientData->med_hist_hypertension = $this->med_hist_hypertension;
+            $patientData->med_hist_male_hypogonadism = $this->med_hist_male_hypogonadism;
+            $patientData->med_hist_hypogonadism = $this->med_hist_hypogonadism;
+            $patientData->med_hist_Infection_problems = $this->med_hist_Infection_problems;
+            $patientData->med_hist_insomnia = $this->med_hist_insomnia;
+            $patientData->med_hist_irritable_bowel_syndrome = $this->med_hist_irritable_bowel_syndrome;
+            $patientData->med_hist_kidney_problems = $this->med_hist_kidney_problems;
+            $patientData->med_hist_menopause = $this->med_hist_menopause;
+            $patientData->med_hist_migranes_headaches = $this->med_hist_migranes_headaches;
+            $patientData->med_hist_neuropathy = $this->med_hist_neuropathy;
+            $patientData->med_hist_onychomycosis = $this->med_hist_onychomycosis;
+            $patientData->med_hist_organ_injury = $this->med_hist_organ_injury;
+            $patientData->med_hist_osteoporosis = $this->med_hist_osteoporosis;
+            $patientData->med_hist_pulmonary_embolism = $this->med_hist_pulmonary_embolism;
+            $patientData->med_hist_seizure_disorders = $this->med_hist_seizure_disorders;
+            $patientData->med_hist_short_Breath = $this->med_hist_short_Breath;
+            $patientData->med_hist_sinus_onditions = $this->med_hist_sinus_onditions;
+            $patientData->med_hist_stroke = $this->med_hist_stroke;
+            $patientData->med_hist_syndrome_x = $this->med_hist_syndrome_x;
+            $patientData->med_hist_tremors = $this->med_hist_tremors;
+            $patientData->med_hist_wheat_allergy = $this->med_hist_wheat_allergy;
+            $patientData->any_other_medical_problem = $this->any_other_medical_problem;
+            $patientData->discussed_at_mdt = $this->discussed_at_mdt;
+
+            
 
             $patientData->save();
             // $this->reset();
