@@ -25,7 +25,6 @@ jobs:
           ls -a &&
           git pull origin main &&
           composer install --no-interaction &&
-          php artisan migrate  &&
           php artisan config:clear &&
           php artisan cache:clear &&
           npm install &&
