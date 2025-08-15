@@ -22,7 +22,14 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_SERVER_USER }}@${{ secrets.DEPLOY_SERVER_IP }} "
           cd ${{ secrets.DEPLOY_SERVER_DIR }} &&
-          ls -a 
+          ls -a &&
+          git pull origin main &&
+          composer install --no-interaction &&
+          php artisan migrate  &&
+          php artisan config:clear &&
+          php artisan cache:clear &&
+          npm install &&
+          npm run build
        
         "
         
