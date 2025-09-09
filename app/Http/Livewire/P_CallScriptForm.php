@@ -203,7 +203,8 @@ class P_CallScriptForm extends Component
 
         auth()->user()->p_callscript()->create($data);
         //$this->reset();
-        $this->currentStep = 1;
+        // $this->currentStep = 1;
+        return $this->redirectRoute('patient');
 
     }
 
@@ -245,7 +246,8 @@ class P_CallScriptForm extends Component
 
             $patientData->save();
             // $this->reset();
-            $this->currentStep = 1;
+            // $this->currentStep = 1;
+            return $this->redirectRoute('patient');
         }
     }
 

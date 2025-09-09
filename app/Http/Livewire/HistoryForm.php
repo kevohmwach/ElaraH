@@ -378,7 +378,8 @@ class HistoryForm extends Component
 
         auth()->user()->history()->create($data);
         //$this->reset();
-        $this->currentStep = 1;
+        // $this->currentStep = 1;
+        return $this->redirectRoute('patient');
 
     }
     public function update(){
@@ -455,7 +456,8 @@ class HistoryForm extends Component
 
             $patientData->save();
             // $this->reset();
-            $this->currentStep = 1;
+            // $this->currentStep = 1;
+            return $this->redirectRoute('patient');
 
         }
     }

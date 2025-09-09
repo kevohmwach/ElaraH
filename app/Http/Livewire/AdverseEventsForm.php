@@ -106,7 +106,8 @@ class AdverseEventsForm extends Component
 
         auth()->user()->adverse_events()->create($data);
         //$this->reset();
-        $this->currentStep = 1;
+        // $this->currentStep = 1;
+        return $this->redirectRoute('patient');
 
     }
 
@@ -125,6 +126,7 @@ class AdverseEventsForm extends Component
         $adverse_events->save();
 
         // $this->reset();
-        $this->currentStep = 1;
+        // $this->currentStep = 1;
+        return $this->redirectRoute('patient');
     }
 }

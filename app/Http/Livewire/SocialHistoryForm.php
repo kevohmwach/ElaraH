@@ -217,7 +217,8 @@ class SocialHistoryForm extends Component
 
         auth()->user()->socialhistory()->create($data);
         //$this->reset();
-        $this->currentStep = 1;
+        // $this->currentStep = 1;
+        return $this->redirectRoute('patient');
 
     }
     public function update(){
@@ -263,7 +264,8 @@ class SocialHistoryForm extends Component
 
             $patientData->save();
             // $this->reset();
-            $this->currentStep = 1;
+            // $this->currentStep = 1;
+            return $this->redirectRoute('patient');
         }
     }
 
