@@ -441,7 +441,7 @@
 
 <footer>
     <div class="footer">
-        <p> <?=date('Y')?> &nbsp &#169; Elara health care innovation</p>
+        <p> <?=date('Y')?> &nbsp &#169; Elara Health innovations</p>
 
     </div>
 </footer>

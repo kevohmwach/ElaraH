@@ -52,7 +52,7 @@
             color: white;
         }
         .home_div_text{
-            padding: 20px;
+            padding: 15px 20px;
             margin-bottom: 50px;
             /* color: black; */
             /* font-weight: bold; */
@@ -60,6 +60,16 @@
             background-color: #5886a8;
             background-color: #2b3a80;
             border-radius: 10px;
+            /* font-size: 16px; */
+            line-height: 30px;
+            text-align: left;
+            font-family: Verdana, sans-serif;
+        }
+        .vission{
+           margin-top: 200px; 
+        }
+        .home_div_text > h1{
+            font-family: Georgia, serif;
         }
 
         /* ----------------------------------Home Page End --------------------------------------- */
@@ -320,6 +330,7 @@
             color: white;
             /* top:0; */
             /* position: fixed; */
+            /* margin-bottom: 50px; */
        }
        .form-nav-links{
             
@@ -673,7 +684,7 @@
         
                 <div class="app_name">
                     <a  class="links" href="{{ url('/') }}">
-                        Elara Health Care Innovation
+                        Elara Health innovations
                     </a>
                 </div>
             </div>
@@ -688,7 +699,7 @@
                
                 <div class="dropdown_div">
                     <button class="record_dropbtn" onclick="view_records()">Records
-                      <i onclick="view_records()" class="fa fa-caret-down"></i>
+                      {{-- <i onclick="view_records()" class="fa fa-caret-down"></i> --}}
                     </button>
                     <div class="dropdown-content" id="record_Dropdown">
                       <a href="{{route('patient')}}">Patients</a>
@@ -698,7 +709,7 @@
 
                 <div class="dropdown_div">
                     <button class="form_dropbtn" onclick="update_patient()">Forms 
-                      <i onclick="update_patient()" class="fa fa-caret-down"></i>
+                      {{-- <i onclick="update_patient()" class="fa fa-caret-down"></i> --}}
                     </button>
                     <div class="dropdown-content" id="form_Dropdown">
                       <a href="{{route('patient_register')}}">Patient Intake</a>
@@ -708,7 +719,7 @@
                 
                 <div class="dropdown_div">
                   <button class="acc_dropbtn" onclick="account()">Account 
-                    <i onclick="account()" class="fa fa-caret-down"></i>
+                    {{-- <i onclick="account()" class="fa fa-caret-down"></i> --}}
                   </button>
                   <div class="dropdown-content dropdown-content-account" id="acc_Dropdown">
                     @guest
@@ -785,7 +796,7 @@
 
 <footer>
     <div class="footer">
-        <p> <?=date('Y')?> &nbsp &#169; Elara health care innovation</p>
+        <p> <?=date('Y')?> &nbsp &#169; Elara Health innovations</p>
 
     </div>
 </footer>

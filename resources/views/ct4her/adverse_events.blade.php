@@ -15,7 +15,7 @@
 
         <div class="app_name">
             <a  class="links" href="{{ url('/') }}">
-                Elara Health Care Innovation
+                Elara Health innovations
             </a>
         </div>
     </div>
@@ -27,7 +27,7 @@
 
         <div class="dropdown_div">
             <button class="record_dropbtn" onclick="view_records()">Records
-                <i onclick="view_records()" class="fa fa-caret-down"></i>
+                {{-- <i onclick="view_records()" class="fa fa-caret-down"></i> --}}
             </button>
             <div class="dropdown-content" id="record_Dropdown">
                 <a href="{{route('patient')}}">Patients</a>
@@ -37,7 +37,7 @@
 
         <div class="dropdown_div">
             <button class="form_dropbtn" onclick="update_patient()">Forms 
-              <i onclick="update_patient()" class="fa fa-caret-down"></i>
+              {{-- <i onclick="update_patient()" class="fa fa-caret-down"></i> --}}
             </button>
             <div class="dropdown-content" id="form_Dropdown">
               <a href="{{route('patient_register')}}">Patient Intake</a>
@@ -55,7 +55,7 @@
           </div>  --}}
         <div class="dropdown_div">
           <button class="acc_dropbtn" onclick="account()">Account 
-            <i onclick="account()" class="fa fa-caret-down"></i>
+            {{-- <i onclick="account()" class="fa fa-caret-down"></i> --}}
           </button>
           <div class="dropdown-content dropdown-content-account" id="acc_Dropdown">
             <a href="{{route('logout')}}">Log out</a>

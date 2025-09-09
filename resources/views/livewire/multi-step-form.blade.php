@@ -135,7 +135,7 @@
 
                         <div>
                             <label for="mobile_contact">Mobile Phone</label><br>
-                            <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text" name="mobile_contact" id="mobile_contact"  wire:model="mobile_contact">
+                            <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="number" name="mobile_contact" id="mobile_contact"  wire:model="mobile_contact">
                             <span class="text-danger">@error('mobile_contact'){{ $message }}@enderror</span>
                         </div>
                         
@@ -352,12 +352,12 @@
 
                     <div class="row_entry">
                         <div>
-                            <label for="dose_n_sig_1">Dose & SIG 1 </label><br>
+                            <label for="dose_n_sig_1">Name</label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_1" id="dose_n_sig_1"  wire:model="dose_n_sig_1">
                             <span class="text-danger">@error('dose_n_sig_1'){{ $message }}@enderror</span>
                         </div> 
                         <div>
-                            <label for="dose_n_sig_1_medication">Dose & SIG 1 Medication </label><br>
+                            <label for="dose_n_sig_1_medication">Dose </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_1_medication" id="dose_n_sig_1_medication"  wire:model="dose_n_sig_1_medication">
                             <span class="text-danger">@error('dose_n_sig_1_medication'){{ $message }}@enderror</span>
                         </div> 
@@ -404,12 +404,12 @@
 
                     <div class="row_entry">
                         <div>
-                            <label for="dose_n_sig_2">Dose & SIG 2 </label><br>
+                            <label for="dose_n_sig_2">Name </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_2" id="dose_n_sig_2"  wire:model="dose_n_sig_2">
                             <span class="text-danger">@error('dose_n_sig_2'){{ $message }}@enderror</span>
                         </div> 
                         <div>
-                            <label for="dose_n_sig_2_medication">Dose & SIG 2 Medication </label><br>
+                            <label for="dose_n_sig_2_medication">Dose </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_2_medication" id="dose_n_sig_2_medication"  wire:model="dose_n_sig_2_medication">
                             <span class="text-danger">@error('dose_n_sig_2_medication'){{ $message }}@enderror</span>
                         </div> 
@@ -454,12 +454,12 @@
                     </div>
                     <div class="row_entry">
                         <div>
-                            <label for="dose_n_sig_3">Dose & SIG 3 </label><br>
+                            <label for="dose_n_sig_3">Name </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_3" id="dose_n_sig_3"  wire:model="dose_n_sig_3">
                             <span class="text-danger">@error('dose_n_sig_3'){{ $message }}@enderror</span>
                         </div> 
                         <div>
-                            <label for="dose_n_sig_3_medication">Dose & SIG 3 Medication </label><br>
+                            <label for="dose_n_sig_3_medication">Dose </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_3_medication" id="dose_n_sig_3_medication"  wire:model="dose_n_sig_3_medication">
                             <span class="text-danger">@error('dose_n_sig_3_medication'){{ $message }}@enderror</span>
                         </div> 
@@ -504,12 +504,12 @@
                     </div>
                     <div class="row_entry">
                         <div>
-                            <label for="dose_n_sig_4">Dose & SIG 4 </label><br>
+                            <label for="dose_n_sig_4">Name </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_4" id="dose_n_sig_4"  wire:model="dose_n_sig_4">
                             <span class="text-danger">@error('dose_n_sig_4'){{ $message }}@enderror</span>
                         </div> 
                         <div>
-                            <label for="dose_n_sig_4_medication">Dose & SIG 4 Medication </label><br>
+                            <label for="dose_n_sig_4_medication">Dose </label><br>
                             <input <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="text"  name="dose_n_sig_4_medication" id="dose_n_sig_4_medication"  wire:model="dose_n_sig_4_medication">
                             <span class="text-danger">@error('dose_n_sig_4_medication'){{ $message }}@enderror</span>
                         </div> 

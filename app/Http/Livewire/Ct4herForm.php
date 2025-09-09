@@ -317,7 +317,8 @@ class Ct4herForm extends Component
     
                     auth()->user()->ct4her()->create($data);
                     // $this->reset();
-                    $this->currentStep = 1;
+                    // $this->currentStep = 1;
+                    return $this->redirectRoute('ct4her');
 
                 }else{
                     dd('Similar Patient already Onboarded! Only edit option is available. Note: Pls Confirm whether desired operation or open multiple onboarding');

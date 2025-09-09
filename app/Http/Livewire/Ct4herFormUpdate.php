@@ -377,7 +377,8 @@ class Ct4herFormUpdate extends Component
                     $ct4herData->save();
 
                     // $this->reset();
-                    $this->currentStep = 1;
+                    // $this->currentStep = 1;
+                    return $this->redirectRoute('ct4her');
                 }else{
                     echo "Consent FIle upload failed ";
                 }

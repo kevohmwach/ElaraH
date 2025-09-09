@@ -124,7 +124,7 @@ class MultiStepForm extends Component
                 'address_code'=>'required|string',
                 'physical_address'=>'required|string',
                 'county'=>'required|string',
-                'mobile_contact'=>'required|string',
+                'mobile_contact'=>'required|numeric|digits:10',
                 'alt_contact'=>'',
                 'id_no'=>'required|numeric',
                 'email'=>'required|string',
@@ -134,8 +134,8 @@ class MultiStepForm extends Component
                 'language'=>'required|array',
                 'other_language'=>'',
                 'marital'=>'required|string',
-                'spouse_name'=>'required|string',
-                'spouse_phone'=>'required|string',
+                'spouse_name'=>'',
+                'spouse_phone'=>'',
             ]);
         }
         else if($this->currentStep == 2){
@@ -146,10 +146,10 @@ class MultiStepForm extends Component
                 'emergency_contact_mobile'=>'required|string',
                 'emergency_contact_alt_mobile'=>'',
                 'physician_id_1'=>'required|string',
-                'physician_id_2'=>'required|string',
-                'physician_id_1'=>'required|string',
-                'pharmacist_id_1' => 'required|string',
-                'pharmacist_id_2' => 'required|string',
+                'physician_id_2'=>'',
+                // 'physician_id_1'=>'',
+                'pharmacist_id_1' => '',
+                'pharmacist_id_2' => '',
                 'ct_scan_file' => 'required|mimes:pdf',
                 'x_ray_file' => 'required|mimes:pdf',
                 'patient_consent_file' => 'required|mimes:pdf',
@@ -160,32 +160,35 @@ class MultiStepForm extends Component
             $this->validate([
                 'dose_n_sig_1'=>'required|string',
                 'dose_n_sig_1_medication'=>'required|string',
-                'dose_n_sig_2'=>'required|string',
-                'dose_n_sig_2_medication'=>'required|string',
-                'dose_n_sig_3'=>'required|string',
-                'dose_n_sig_3_medication'=>'required|string',
-                'dose_n_sig_4'=>'required|string',
-                'dose_n_sig_4_medication'=>'required|string',
-                'dose_n_sig_4_quantity'=>'required|string',
-                'dose_n_sig_4_units'=>'required|string',
-                'dose_n_sig_4_administration'=>'required|string',
-                'dose_n_sig_4_frequency'=>'required|string',
-                'dose_n_sig_4_tabs_freq'=>'required|string',
-                'dose_n_sig_3_quantity'=>'required|string',
-                'dose_n_sig_3_units'=>'required|string',
-                'dose_n_sig_3_administration'=>'required|string',
-                'dose_n_sig_3_frequency'=>'required|string',
-                'dose_n_sig_3_tabs_freq'=>'required|string',
-                'dose_n_sig_2_quantity'=>'required|string',
-                'dose_n_sig_2_units'=>'required|string',
-                'dose_n_sig_2_administration'=>'required|string',
-                'dose_n_sig_2_frequency'=>'required|string',
-                'dose_n_sig_2_tabs_freq'=>'required|string',
                 'dose_n_sig_1_quantity'=>'required|string',
                 'dose_n_sig_1_units'=>'required|string',
                 'dose_n_sig_1_administration'=>'required|string',
                 'dose_n_sig_1_frequency'=>'required|string',
                 'dose_n_sig_1_tabs_freq'=>'required|string',
+
+                'dose_n_sig_2'=>'',
+                'dose_n_sig_2_medication'=>'',
+                'dose_n_sig_2_quantity'=>'',
+                'dose_n_sig_2_units'=>'',
+                'dose_n_sig_2_administration'=>'',
+                'dose_n_sig_2_frequency'=>'',
+                'dose_n_sig_2_tabs_freq'=>'',
+
+                'dose_n_sig_3'=>'',
+                'dose_n_sig_3_medication'=>'',
+                'dose_n_sig_3_quantity'=>'',
+                'dose_n_sig_3_units'=>'',
+                'dose_n_sig_3_administration'=>'',
+                'dose_n_sig_3_frequency'=>'',
+                'dose_n_sig_3_tabs_freq'=>'',
+
+                'dose_n_sig_4'=>'',
+                'dose_n_sig_4_medication'=>'',
+                'dose_n_sig_4_quantity'=>'',
+                'dose_n_sig_4_units'=>'',
+                'dose_n_sig_4_administration'=>'',
+                'dose_n_sig_4_frequency'=>'',
+                'dose_n_sig_4_tabs_freq'=>'',
 
             ]);
         }
@@ -310,7 +313,8 @@ class MultiStepForm extends Component
             }else{
                 auth()->user()->patient()->create($data);
                 //$this->reset();
-                $this->currentStep = 1;
+                // $this->currentStep = 1;
+                return $this->redirectRoute('patient');
             }
            
         }
