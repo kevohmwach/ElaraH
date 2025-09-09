@@ -86,12 +86,12 @@ class PractitionerPreContoller extends Controller
         if(Auth::user()->role>1){
             $data= request()->validate([
                 'pract_name' => 'required|string',
-                'pract_mobile_phone' => 'required|string',
+                'pract_mobile_phone' => 'required|numeric|digits:10',
                 'pract_email' => 'required|string',
                 'pract_speciality' => 'required|string',
                 'pract_title' => 'required|string',
                 'pract_licence_no' => 'required|string',
-                'pract_exp_years' => 'required|string',
+                'pract_exp_years' => 'required|numeric',
             ]);
      
             $practitioner->update($data);

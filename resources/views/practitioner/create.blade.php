@@ -20,7 +20,7 @@
             <div class="preconfigure_options">
                 <label  class="label">Practitioner Mobile Phone</label>
 
-                <input id="pract_mobile_phone" type="text"  class="form-control @error('pract_mobile_phone') is-invalid @enderror <br><br>" name="pract_mobile_phone" value="{{ old('pract_mobile_phone') }}" required autocomplete="pract_mobile_phone" autofocus>
+                <input id="pract_mobile_phone" type="number"  class="form-control @error('pract_mobile_phone') is-invalid @enderror <br><br>" name="pract_mobile_phone" value="{{ old('pract_mobile_phone') }}" required autocomplete="pract_mobile_phone" autofocus>
                 @error('pract_mobile_phone')
                     <span class="invalid-feedback" role="alert">
                          <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
             <div class="preconfigure_options">
                 <label  class="label">Practitioner Email</label>
 
-                <input id="pract_email" type="text"  class="form-control @error('pract_email') is-invalid @enderror <br><br>" name="pract_email" value="{{ old('pract_email') }}" required autocomplete="pract_email" autofocus>
+                <input id="pract_email" type="email"  class="form-control @error('pract_email') is-invalid @enderror <br><br>" name="pract_email" value="{{ old('pract_email') }}" required autocomplete="pract_email" autofocus>
                 @error('pract_email')
                     <span class="invalid-feedback" role="alert">
                          <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
             <div class="preconfigure_options">
                 <label  class="label">Practitioner Years of Experience</label>
 
-                <input id="pract_exp_years" type="text"  class="form-control @error('pract_exp_years') is-invalid @enderror <br><br>" name="pract_exp_years" value="{{ old('pract_exp_years') }}" required autocomplete="pract_exp_years" autofocus>
+                <input id="pract_exp_years" type="number"  class="form-control @error('pract_exp_years') is-invalid @enderror <br><br>" name="pract_exp_years" value="{{ old('pract_exp_years') }}" required autocomplete="pract_exp_years" autofocus>
                 @error('pract_exp_years')
                     <span class="invalid-feedback" role="alert">
                          <strong>{{ $message }}</strong>
