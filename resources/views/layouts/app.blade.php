@@ -124,6 +124,9 @@
             background-color: grey;
             padding: 20px;
         }
+        .pre_sectionTitle{
+            padding-right: 20px;
+        }
         .wrapper-updateblade{
             width: 95%;
             margin: auto;

@@ -49,10 +49,20 @@
 @section('content')
 
 <div class="wrapper">
-    <div class="subsections_showblade" >Patient's Preconfigured Options</div>
+    <div class="subsections_showblade" ><span class="pre_sectionTitle">Patient's Preconfigured Options</span>
+        @if(Auth::user()->role>1)
+            <a href="{{route('p_response_create')}}">
+                <button <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="button" class="btn btn-md btn-primary" >Create</button>
+            </a>
+        @endif
+        {{-- <button class="btn btn-primary ms-7">
+            <a>Create</a>
+        </button> --}}
+    </div>
+    {{-- <button class="btn btn-primary">Create</button> --}}
     <table  class="patients">
         <thead>
-            <th>Patient Response</th>
+            <th>Patient Response</th>  
              <th>Question No.</th>
             <th>Action</th>
         </thead>

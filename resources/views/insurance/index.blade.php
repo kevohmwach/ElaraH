@@ -49,10 +49,18 @@
 @section('content')
 
 <div class="wrapper">
-    <div class="subsections_showblade" >Insuarance provider preconfigured Options</div>
+    <div class="subsections_showblade" >
+        <span class="pre_sectionTitle">Insurance provider preconfigured Options</span>
+        @if(Auth::user()->role>1)
+            <a href="{{route('insurance_create')}}">
+                <button <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="button" class="btn btn-md btn-primary" >Create</button>
+            </a>
+        @endif
+
+    </div>
     <table  class="patients">
         <thead>
-            <th>Insuarance Provider</th>
+            <th>Insurance Provider</th>
             <th>Action</th>
         </thead>
         @foreach ($data as $item)

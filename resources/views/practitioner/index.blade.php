@@ -49,7 +49,14 @@
 @section('content')
 
 <div class="wrapper wrapper_practioner_dex">
-    <div class="subsections_showblade" >Practitioners Pre-configured Options</div>
+    <div class="subsections_showblade" >
+        <span class="pre_sectionTitle">Practitioners Pre-configured Options</span>
+        @if(Auth::user()->role>1)
+            <a href="{{route('practitioner_create')}}">
+                <button <?php if(Auth::user()->role<2){echo 'disabled';} ?> type="button" class="btn btn-md btn-primary" >Create</button>
+            </a>
+        @endif
+    </div>
     <table  class="patients">
         <thead>
             <th>ACCOUNT</th>
