@@ -56,28 +56,61 @@
 
 # Azure pulls GitHub code into /home/site/repository during the build phase.
 # If that's missing, we fall back to wwwroot.
+# if [ -d "/home/site/repository" ]; then
+#     export REPO_DIR="/home/site/repository"
+# else
+#     export REPO_DIR="/home/site/wwwroot"
+# fi
+
+# cd "$REPO_DIR"
+
+# echo "Build Directory: $(pwd)"
+
+# if [ -f "package.json" ]; then
+#     echo "package.json found. Installing and Building..."
+    
+#     # 1. Install dependencies
+#     npm install
+    
+#     # 2. Compile Vite assets
+#     npm run build
+    
+#     echo "Build process finished successfully."
+# else
+#     echo "Error: package.json not found in $(pwd)"
+#     ls -la # This helps you see what Azure actually sees in the logs
+#     exit 1
+# fi
+
+# # 3. THE CRITICAL STEP: Sync the build to the live web root
+# # This ensures /home/site/wwwroot/public/build exists
+# echo "Syncing build folder to wwwroot..."
+# mkdir -p /home/site/wwwroot/public/build
+# cp -rv public/build/* /home/site/wwwroot/public/build/
+
+
+
+
+
+#!/bin/bash
+
+# 1. Enter the build directory
 if [ -d "/home/site/repository" ]; then
-    export REPO_DIR="/home/site/repository"
+    cd /home/site/repository
 else
-    export REPO_DIR="/home/site/wwwroot"
+    cd /home/site/wwwroot
 fi
 
-cd "$REPO_DIR"
+# 2. Run the build
+echo "Installing and Building Vite assets in $(pwd)..."
+npm install
+npm run build
 
-echo "Build Directory: $(pwd)"
+# 3. THE CRITICAL STEP: Sync the build to the live web root
+# This ensures /home/site/wwwroot/public/build exists
+echo "Syncing build folder to wwwroot..."
+mkdir -p /home/site/wwwroot/public/build
+cp -rv public/build/* /home/site/wwwroot/public/build/
 
-if [ -f "package.json" ]; then
-    echo "package.json found. Installing and Building..."
-    
-    # 1. Install dependencies
-    npm install
-    
-    # 2. Compile Vite assets
-    npm run build
-    
-    echo "Build process finished successfully."
-else
-    echo "Error: package.json not found in $(pwd)"
-    ls -la # This helps you see what Azure actually sees in the logs
-    exit 1
-fi
+# 4. Final Permissions Check
+chmod -R 775 /home/site/wwwroot/storage /home/site/wwwroot/bootstrap/cache
