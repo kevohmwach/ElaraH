@@ -23,25 +23,61 @@
 
 # Navigate to the deployment source (where your code actually sits during build)
 # If DEPLOYMENT_TARGET isn't set, fallback to the standard site root
-TARGET_DIR="${DEPLOYMENT_TARGET:-/home/site/wwwroot}"
-cd "$TARGET_DIR"
 
-echo "Current directory: $(pwd)"
-echo "Checking for package.json..."
 
-if [ -f "package.json" ]; then
-    echo "package.json found. Starting build..."
+
+# TARGET_DIR="${DEPLOYMENT_TARGET:-/home/site/wwwroot}"
+# cd "$TARGET_DIR"
+
+# echo "Current directory: $(pwd)"
+# echo "Checking for package.json..."
+
+# if [ -f "package.json" ]; then
+#     echo "package.json found. Starting build..."
     
-    # Force npm to use the local directory and ignore global config conflicts
-    npm install --prefix "$TARGET_DIR"
-    npm run build --prefix "$TARGET_DIR"
+#     # Force npm to use the local directory and ignore global config conflicts
+#     npm install --prefix "$TARGET_DIR"
+#     npm run build --prefix "$TARGET_DIR"
     
-    echo "Vite build successful."
+#     echo "Vite build successful."
+# else
+#     echo "ERROR: package.json not found in $(pwd)"
+#     exit 1
+# fi
+
+# # Optional: Laravel optimizations
+# php artisan config:cache
+# php artisan route:cache
+
+
+
+
+#!/bin/bash
+
+# Azure pulls GitHub code into /home/site/repository during the build phase.
+# If that's missing, we fall back to wwwroot.
+if [ -d "/home/site/repository" ]; then
+    export REPO_DIR="/home/site/repository"
 else
-    echo "ERROR: package.json not found in $(pwd)"
-    exit 1
+    export REPO_DIR="/home/site/wwwroot"
 fi
 
-# Optional: Laravel optimizations
-php artisan config:cache
-php artisan route:cache
+cd "$REPO_DIR"
+
+echo "Build Directory: $(pwd)"
+
+if [ -f "package.json" ]; then
+    echo "package.json found. Installing and Building..."
+    
+    # 1. Install dependencies
+    npm install
+    
+    # 2. Compile Vite assets
+    npm run build
+    
+    echo "Build process finished successfully."
+else
+    echo "Error: package.json not found in $(pwd)"
+    ls -la # This helps you see what Azure actually sees in the logs
+    exit 1
+fi
