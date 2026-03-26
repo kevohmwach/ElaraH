@@ -117,6 +117,12 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+  
+        'insights' => [
+            'driver' => 'custom',
+            'via' => \StellarSecurity\ApplicationInsightsLaravel\Logging\AppInsightsLogger::class,
+        ],
+
     ],
 
 ];
