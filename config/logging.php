@@ -119,7 +119,7 @@ return [
         ],
   
         'insights' => [
-            'driver' => 'custom',
+            'driver' => 'custom', 
             'via' => \StellarSecurity\ApplicationInsightsLaravel\Logging\AppInsightsLogger::class,
         ],
 
