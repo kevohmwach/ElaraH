@@ -33,6 +33,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: laravel-app-bundle
+          path: . # This forces it to extract into the CURRENT directory, not a subfolder
 
       - name: Azure Login
         uses: azure/login@v1
