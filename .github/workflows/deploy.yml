@@ -55,13 +55,13 @@ jobs:
           slot-name: 'laravel-app-staging'
           package: .
 
-      # - name: Run Staging Migrations
-      #   run: |
-      #     az webapp ssh \
-      #       --resource-group app-service-rg\
-      #       --name laravel-webapp-linux \
-      #       --slot laravel-app-staging \
-      #       --command "php artisan migrate --force"
+      - name: Run Staging Migrations
+        run: |
+          az webapp ssh \
+            --resource-group app-service-rg\
+            --name laravel-webapp-linux \
+            --slot laravel-app-staging \
+            --command "php artisan migrate --force"
         
   # --- JOB 3: SWAP TO PRODUCTION (Approval Required) ---
   promote_to_production:
