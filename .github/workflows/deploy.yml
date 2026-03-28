@@ -49,7 +49,7 @@ jobs:
       # - name: Run Staging Migrations
       #   run: |
       #     az webapp ssh \
-      #       --resource-group RG_app_service \
+      #       --resource-group app-service-rg\
       #       --name laravel-webapp-linux \
       #       --slot laravel-app-staging \
       #       --command "php artisan migrate --force"
@@ -68,7 +68,7 @@ jobs:
       - name: Swap Slots
         run: |
           az webapp deployment slot swap \
-            --resource-group RG_app_service \
+            --resource-group app-service-rg\
             --name laravel-webapp-linux \
             --slot laravel-app-staging \
             --target-slot production
