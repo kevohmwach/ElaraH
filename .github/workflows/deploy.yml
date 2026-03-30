@@ -26,6 +26,9 @@ jobs:
           npm install
           npm run build # Compiles your public/build folder
 
+      - name: Create Deployment Zip
+        run: zip -r release.zip . -x "*.git*" "node_modules/*" "tests/*" "storage/framework/cache/[^.]*" "storage/framework/sessions/[^.]*" "storage/framework/views/[^.]*" "storage/logs/[^.]*"
+
       - name: Archive Production Artifact
         uses: actions/upload-artifact@v4
         with:
