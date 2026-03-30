@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: laravel-app-zip
-          path: release.zip # Upload only the single zip file
+          path: release.zip # Upload only the single zip file 
           # name: laravel-app-bundle
           # path: .  # Uploads everything including the new 'vendor' folder
           include-hidden-files: true
