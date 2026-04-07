@@ -23,7 +23,7 @@ jobs:
 
       - name: Install NPM & Build Vite
         run: |
-          npm install
+          npm install 
           npm run build # Compiles your public/build folder
 
       - name: Create Deployment Zip
