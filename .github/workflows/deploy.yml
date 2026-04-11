@@ -87,3 +87,11 @@ jobs:
             --name laravel-webapp-elora \
             --slot laravel-app-staging \
             --target-slot production
+
+      # -- RUN MIGRATIONS AFTER SWAP ---
+      - name: Run Production Migrations
+        run: |
+          az webapp ssh \
+            --resource-group app-service-rg \
+            --name laravel-webapp-elora \
+            --command "php artisan migrate --force"
