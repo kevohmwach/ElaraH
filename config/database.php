@@ -47,12 +47,12 @@ return [
             'driver' => 'mysql',
             'read' => [
                 'host' => [
-                    env('DB_HOST', 'elara-replica.mysql.database.azure.com'),
+                    env('DB_HOST_READ', 'DB_HOST'),
                 ],
             ],
             'write' => [
                 'host' => [
-                    env('DB_HOST', 'elara-primary.mysql.database.azure.com'),
+                    env('DB_HOST_WRITE', 'DB_HOST'),
                 ],
             ],
             'sticky'    => true, // CRITICAL SRE SETTING
