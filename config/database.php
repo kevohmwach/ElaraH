@@ -45,8 +45,20 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
+            'read' => [
+                'host' => [
+                    env('DB_HOST_WRITE', 'elara-replica.mysql.database.azure.com'),
+                ],
+            ],
+            'write' => [
+                'host' => [
+                    env('DB_HOST_READ', 'elara-primary.mysql.database.azure.com'),
+                ],
+            ],
+            'sticky'    => true, // CRITICAL SRE SETTING
+
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            // 'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
